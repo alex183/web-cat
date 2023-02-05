@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/cats', async (req, res) => {
-
+  
   if(req.query.breed){
     const breed = req.query.breed
     const data = await getCatsByBreedId(breed);

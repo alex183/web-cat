@@ -4,7 +4,12 @@ html
     title Cat Showcase
   a(href="/")
     h1 Cat Showcase :D
-  div 
-    block search
+  h2 
+    div busca dos brothers
+    form(method='get' action='/cats')
+      div.form-group
+        input.form-control(type='text' id='breed' placeholder= 'Search for a cat breed :)' name='breed')
+        br
+      button.btn.btn-primary(type='submit') Search Breed!
   body
     block content
