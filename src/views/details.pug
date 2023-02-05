@@ -3,5 +3,61 @@ extends index
 block content
   p Welcome to Cat web app
   div Cat id: #{id}
-  div Breed: #{name}
-  img(height='250px' width='250px' src=imageUrl) 
+  img(height='250px' width='250px' src=imageUrl)
+  div Breed: #{breed.name}
+  div Weight: #{breed.weight}kg
+  div Origin: #{breed.origin}
+  div Temperament: #{breed.temperament}
+  div Description: #{breed.description}
+  div LifeSpan: #{breed.lifeSpan}
+  div AltNames: #{breed.altNames}
+  div Adaptability:
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.adaptabilityLevel>=val?"checked":"")
+  div Affection: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.affectionLevel>=val?"checked":"")
+  div ChildFriendly: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.childFriendlyLevel>=val?"checked":"")
+  div DogFriendly: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.dogFriendlyLevel>=val?"checked":"")
+  div Energy: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.energyLevel>=val?"checked":"")
+  div Grooming: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.groomingLevel>=val?"checked":"")
+  div HealthIssues: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.healthIssuesLevel>=val?"checked":"")
+  div Intelligence: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.intelligenceLevel>=val?"checked":"")
+  div SheddingLevel: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.sheddingLevel>=val?"checked":"")
+  div SocialNeeds: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.socialNeedsLevel>=val?"checked":"")
+  div StrangerFriendly: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.strangerFriendlyLevel>=val?"checked":"")
+  div Vocalisation: 
+    each val in view.starRatingRange
+      span.fa.fa-star(class=breed.vocalisationLevel>=val?"checked":"")
+  div Hairless: 
+    input(type='checkbox' checked=breed.isHairless)
+  div Hypoallergenic:
+    input(type='checkbox' checked=breed.isHypoallergenic)
+  div Rex:
+    input(type='checkbox' checked=breed.isRex)
+  div Suppressed Tail:
+    input(type='checkbox' checked=breed.isSuppressedTail)
+  div Short Legs: 
+    input(type='checkbox' checked=breed.isShortLegs)
+  div Rare:
+    input(type='checkbox' checked=breed.isHairless)
+  a(href=breed.wikipediaUrl)
+    div wikipedia: #{breed.wikipediaUrl}

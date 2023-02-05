@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const path = require('path');
 const { getRandomCats } = require("./src/usecase/getRandomCats");
 const { convertCatListToCatListResponse, convertCatToCatResponse } = require("./src/controller/converter/CatResponseConverter");
-const { getCatsByBreedId } = require('./src/usecase/getCatByBreedId');
 const { getCatById } = require('./src/usecase/getCatById');
+const { getCatByBreedId } = require('./src/usecase/getCatByBreedId')
 
 dotenv.config();
 
@@ -29,7 +29,7 @@ app.get('/cats', async (req, res) => {
   
   if(req.query.breed){
     const breed = req.query.breed
-    const data = await getCatsByBreedId(breed);
+    const data = await getCatByBreedId(breed);
     const catResponse = convertCatToCatResponse(data);
     res.render('details', catResponse)
   }else{
@@ -38,7 +38,7 @@ app.get('/cats', async (req, res) => {
 
 });
 
-app.get('/cat/:id',  async (req, res) => {
+app.get('/cats/:id',  async (req, res) => {
   const data = await getCatById(req.params.id);
   const catDetailsResponse = convertCatToCatResponse(data);
   res.render('details', catDetailsResponse);

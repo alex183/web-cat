@@ -1,9 +1,9 @@
 const { getCatFromCatAPIByBreedId } = require("../gateway/CatAPIGateway");
 
 
-async function getCatsByBreedId(breedId) {
+async function getCatByBreedId(breedId) {
   cats = await getCatFromCatAPIByBreedId(breedId);
   return cats;
 }
 
-exports.getCatsByBreedId = getCatsByBreedId;
+exports.getCatByBreedId = getCatByBreedId;
