@@ -11,6 +11,7 @@ function convertCatToCatResponse(cat) {
 
   catResponse.view = {};
   catResponse.view.starRatingRange = [1,2,3,4,5]  
+  catResponse.view.redirectPath = createRedirectPath(cat);
 
   catResponse.breed = {};
   catResponse.breed.name = cat.breed.name;
@@ -41,6 +42,15 @@ function convertCatToCatResponse(cat) {
   catResponse.breed.wikipediaUrl = cat.breed.wikipediaUrl
 
   return catResponse;
+}
+
+function createRedirectPath(cat){
+  if(cat.id){
+    return "/cats/"+cat.id
+  }
+  else{
+    return "/cats?breed="+cat.breed.id
+  }
 }
 
 exports.convertCatListToCatListResponse = convertCatListToCatListResponse;

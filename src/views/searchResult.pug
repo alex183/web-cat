@@ -1,0 +1,10 @@
+extends index
+
+block content
+  container.container
+    div.catsRow 
+      each cat in cats
+        container.catCard
+          div #{cat.breed.name}
+          a(href=cat.view.redirectPath)
+            img(src=cat.imageUrl).img

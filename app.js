@@ -4,7 +4,8 @@ const path = require('path');
 const { getRandomCats } = require("./src/usecase/getRandomCats");
 const { convertCatListToCatListResponse, convertCatToCatResponse } = require("./src/controller/converter/CatResponseConverter");
 const { getCatById } = require('./src/usecase/getCatById');
-const { getCatByBreedId } = require('./src/usecase/getCatByBreedId')
+const { getCatsByBreedIds } = require('./src/usecase/getCatByBreedId');
+const { getCatsByBreedName } = require('./src/usecase/getCatsByBreedName');
 
 dotenv.config();
 
@@ -17,31 +18,43 @@ app.set('view engine', 'pug');
 
 app.get('/', async (req, res) => {
   
-  const data = await getRandomCats();
-  const showcaseResponse ={
-    cats: []
-  }
-  showcaseResponse.cats = convertCatListToCatListResponse(data);
-  res.render('showcase', showcaseResponse);
+  await buildDefaultShowcase(res);
 });
 
 app.get('/cats', async (req, res) => {
   
+try{
   if(req.query.breed){
-    const breed = req.query.breed
-    const data = await getCatByBreedId(breed);
-    const catResponse = convertCatToCatResponse(data);
+    const breedId = req.query.breed
+    const data = await getCatsByBreedIds(breedId.split(','));
+    const catResponse = convertCatToCatResponse(data[0]);
     res.render('details', catResponse)
-  }else{
-    res.render('showcase');
-  } 
+  }else if (req.query.breedName){
+    const breedName = req.query.breedName
+    const catsByBreedName = await getCatsByBreedName(breedName);
+    const searchResponse = {
+      cats: convertCatListToCatListResponse(catsByBreedName)
+    }
+    res.render('searchResult',searchResponse);
+  } else{
+    await buildDefaultShowcase(res)
+  }
+}catch(err){
+  res.render('notFound')
+}
 
 });
 
 app.get('/cats/:id',  async (req, res) => {
-  const data = await getCatById(req.params.id);
-  const catDetailsResponse = convertCatToCatResponse(data);
-  res.render('details', catDetailsResponse);
+
+  if(req.params.id){
+    const data = await getCatById(req.params.id);
+    const catDetailsResponse = convertCatToCatResponse(data);
+    res.render('details', catDetailsResponse);
+  }
+  else{
+    await buildDefaultShowcase(res)
+  }
 
 });
 
@@ -53,3 +66,13 @@ app.get('*', (req, res, next) => {
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
+
+async function buildDefaultShowcase(res) {
+  const data = await getRandomCats();
+  const showcaseResponse = {
+    cats: []
+  };
+  showcaseResponse.cats = convertCatListToCatListResponse(data);
+  res.render('showcase', showcaseResponse);
+}
+
