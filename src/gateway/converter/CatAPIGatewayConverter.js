@@ -7,7 +7,7 @@ function convertCatListGatewayResponseToCatList(data) {
 function convertCatGatewayResponseToCat(c) {
   const cat = {};
   cat.id = c.id;
-  cat.name = c.breeds[0].name;
+  cat.name = c.breeds!=undefined?c.breeds[0].name:"Breed name not found";
   cat.imageUrl = c.url;
   return cat;
 }

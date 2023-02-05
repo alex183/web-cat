@@ -1,16 +1,18 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const { getRandomCats } = require("./usecase/getRandomCats");
-const { convertCatListToCatListResponse, convertCatToCatResponse } = require("./controller/converter/CatResponseConverter");
-const { getCatsByBreedId } = require('./usecase/getCatByBreedId');
-const { getCatById } = require('./usecase/getCatById');
+const path = require('path');
+const { getRandomCats } = require("./src/usecase/getRandomCats");
+const { convertCatListToCatListResponse, convertCatToCatResponse } = require("./src/controller/converter/CatResponseConverter");
+const { getCatsByBreedId } = require('./src/usecase/getCatByBreedId');
+const { getCatById } = require('./src/usecase/getCatById');
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 
-app.set('views', './views')
+app.set('views', './src/views')
+app.use(express.static('./src/public'))
 app.set('view engine', 'pug');
 
 app.get('/', async (req, res) => {

@@ -1,0 +1,10 @@
+extends index
+
+block content
+  container.container
+    div.catsRow 
+      each cat in cats
+        container.catCard
+          div #{cat.name}
+          a(href="/cat/"+cat.id)
+            img(src=cat.imageUrl).img

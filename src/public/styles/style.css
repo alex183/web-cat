@@ -1,0 +1,30 @@
+.catsRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.catCard{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 24px;
+}
+
+.img{
+    width: 500px;
+    height: 400px;
+}
+
+.searchContainer{
+    display: flex;
+    align-items: center;
+}

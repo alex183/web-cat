@@ -1,0 +1,18 @@
+doctype html
+html
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, maximum-scale=1.0, user-scalable=no')
+  link(rel="stylesheet", href="../styles/style.css")
+  head
+    title Cat Showcase
+  header.header 
+    a(href="/").logo
+      h1 Cat Showcase :D
+    div.searchContainer
+      form(method='get' action='/cats')
+        div.form-group
+          input.form-control(type='text' id='breed' placeholder= 'Search for a cat breed :)' name='breed')
+          button.btn.btn-primary(type='submit') Search Breed!      
+  body
+    block content
