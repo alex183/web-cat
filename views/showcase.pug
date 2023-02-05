@@ -1,0 +1,10 @@
+extends index
+
+block content
+  p Welcome to Cat web app
+  div funciona pfv 3
+  ul
+    each cat in cats
+      div #{cat.name}
+        a(href="/cat/"+cat.id)
+          img(height='250px' width='250px' src=cat.imageUrl) 
