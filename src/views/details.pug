@@ -1,63 +1,107 @@
 extends index
 
 block content
-  p Welcome to Cat web app
-  div Cat id: #{id}
-  img(height='250px' width='250px' src=imageUrl)
-  div Breed: #{breed.name}
-  div Weight: #{breed.weight}kg
-  div Origin: #{breed.origin}
-  div Temperament: #{breed.temperament}
-  div Description: #{breed.description}
-  div LifeSpan: #{breed.lifeSpan}
-  div AltNames: #{breed.altNames}
-  div Adaptability:
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.adaptabilityLevel>=val?"checked":"")
-  div Affection: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.affectionLevel>=val?"checked":"")
-  div ChildFriendly: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.childFriendlyLevel>=val?"checked":"")
-  div DogFriendly: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.dogFriendlyLevel>=val?"checked":"")
-  div Energy: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.energyLevel>=val?"checked":"")
-  div Grooming: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.groomingLevel>=val?"checked":"")
-  div HealthIssues: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.healthIssuesLevel>=val?"checked":"")
-  div Intelligence: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.intelligenceLevel>=val?"checked":"")
-  div SheddingLevel: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.sheddingLevel>=val?"checked":"")
-  div SocialNeeds: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.socialNeedsLevel>=val?"checked":"")
-  div StrangerFriendly: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.strangerFriendlyLevel>=val?"checked":"")
-  div Vocalisation: 
-    each val in view.starRatingRange
-      span.fa.fa-star(class=breed.vocalisationLevel>=val?"checked":"")
-  div Hairless: 
-    input(type='checkbox' checked=breed.isHairless)
-  div Hypoallergenic:
-    input(type='checkbox' checked=breed.isHypoallergenic)
-  div Rex:
-    input(type='checkbox' checked=breed.isRex)
-  div Suppressed Tail:
-    input(type='checkbox' checked=breed.isSuppressedTail)
-  div Short Legs: 
-    input(type='checkbox' checked=breed.isShortLegs)
-  div Rare:
-    input(type='checkbox' checked=breed.isHairless)
-  a(href=breed.wikipediaUrl)
-    div wikipedia: #{breed.wikipediaUrl}
+  div.detailsBody
+    div.bigCatCard
+      img(height='250px' width='250px' src=imageUrl).bigCatCardImg
+      div.bigCatCardResume
+        h2 #{breed.name}
+        div.bigCardCardResumeHeader #{breed.description}
+        div.bigCardCardResumeHeader #{breed.altNames}
+        div.bigCardCardResumeHeader #{breed.temperament}
+        br
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Weight:
+          div #{breed.weight} kg
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Origin: 
+          div #{breed.origin}
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields LifeSpan: 
+          div #{breed.lifeSpan} years
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Adaptability:
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.adaptabilityLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Affection: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.affectionLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields ChildFriendly: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.childFriendlyLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields DogFriendly: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.dogFriendlyLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Energy: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.energyLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Grooming: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.groomingLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields HealthIssues: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.healthIssuesLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Intelligence: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.intelligenceLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields SheddingLevel: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.sheddingLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields SocialNeeds: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.socialNeedsLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields StrangerFriendly: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.strangerFriendlyLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Vocalisation: 
+          div
+            each val in view.starRatingRange
+              span.fa.fa-star(class=breed.vocalisationLevel>=val?"checked":"")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Hairless: 
+          div
+            span.fa.fa-check(class=breed.healthIssuesLevel?"greenChecked":"grayChecked")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Hypoallergenic:
+          div
+            span.fa.fa-check(class=breed.isHypoallergenic?"greenChecked":"grayChecked")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Rex:
+          div
+            span.fa.fa-check(class=breed.isRex?"greenChecked":"grayChecked")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Suppressed Tail:
+          div
+            span.fa.fa-check(class=breed.isSuppressedTail?"greenChecked":"grayChecked")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Short Legs: 
+          div
+            span.fa.fa-check(class=breed.isShortLegs?"greenChecked":"grayChecked")
+        div.bigCatCardResumeLine
+          div.bigCardCardResumeFields Rare:
+          div
+            span.fa.fa-check(class=breed.isHairless?"greenChecked":"grayChecked")        
+        a(href=breed.wikipediaUrl)
+          div.fakeButton Wikipedia

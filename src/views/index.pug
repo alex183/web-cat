@@ -6,14 +6,15 @@ html
   link(rel="stylesheet", href="../styles/style.css")
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   head
-    title Cat Showcase
-  header.header 
-    a(href="/").logo
-      h1 Cat Showcase :D
-    div.searchContainer
-      form(method='get' action='/cats')
-        div.form-group
-          input.form-control(type='text' id='breedName' placeholder= 'Search for a cat breed :)' name='breedName')
-          button.btn.btn-primary(type='submit') Search Breed!      
+    title Cat Showcase  
   body
+    header
+      div.logoResponsive
+        a(href="/")
+          img(src="../images/catLogo.png").logo
+      div.searchContainer.searchResponsive
+        form(method='get' action='/cats')
+          div.form-group
+            input.form-control(type='text' id='breedName' placeholder= 'Search for a cat breed :)' name='breedName')
+            button.btn.btn-primary(type='submit') Search Breed!    
     block content

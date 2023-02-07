@@ -4,7 +4,8 @@ block content
   container.container
     div.catsRow 
       each cat in cats
-        container.catCard
-          div #{cat.breed.name}
-          a(href="/cats/"+cat.id)
-            img(src=cat.imageUrl).img
+        a(href="/cats/"+cat.id)
+          div.catCard
+            img(src=cat.imageUrl).catCardImg
+            div.catCardName #{cat.breed.name}
+            
