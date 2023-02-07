@@ -10,16 +10,20 @@ router.get('', async (req, res) => {
   try {
       if (req.query.breed) {
         const breedId = req.query.breed;
-        const data = await getCatsByBreedIds(breedId.split(','));
-        const catResponse = convertCatToCatResponse(data[0]);
-        res.render('details', catResponse);
+        const catsByBreedIds = await getCatsByBreedIds(breedId.split(','));
+        if(catsByBreedIds){
+          const catResponse = convertCatToCatResponse(catsByBreedIds[0]);
+          res.render('details', catResponse);
+        }else{
+          res.render('notFound');
+        }        
       } else if (req.query.breedName) {
         const breedName = req.query.breedName;
         const catsByBreedName = await getCatsByBreedName(breedName);
-        if(catsByBreedName){
+        if(catsByBreedName.length>0){
           const searchResponse = {
             cats: convertCatListToCatListResponse(catsByBreedName)
-        };
+          };
           res.render('searchResult', searchResponse);
         }else{
           res.render('notFound');
