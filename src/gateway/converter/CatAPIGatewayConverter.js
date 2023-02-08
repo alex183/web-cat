@@ -34,7 +34,7 @@ function convertBreedGatewayResponseToBreed(breedGatewayResponse) {
     temperament: breedGatewayResponse.temperament,
     description: breedGatewayResponse.description,
     lifeSpan: breedGatewayResponse.life_span,
-    AltNames: breedGatewayResponse.alt_names,
+    altNames: breedGatewayResponse.alt_names,
     adaptabilityLevel: breedGatewayResponse.adaptability,
     affectionLevel: breedGatewayResponse.affection_level,
     childFriendlyLevel: breedGatewayResponse.child_friendly,

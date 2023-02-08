@@ -6,8 +6,8 @@ block content
       img(height='250px' width='250px' src=imageUrl).bigCatCardImg
       div.bigCatCardResume
         h2 #{breed.name}
-        div.bigCardCardResumeHeader #{breed.description}
         div.bigCardCardResumeHeader #{breed.altNames}
+        p.bigCardCardResumeHeader #{breed.description}
         div.bigCardCardResumeHeader #{breed.temperament}
         br
         div.bigCatCardResumeLine
@@ -30,12 +30,12 @@ block content
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.affectionLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields ChildFriendly: 
+          div.bigCardCardResumeFields Child friendly: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.childFriendlyLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields DogFriendly: 
+          div.bigCardCardResumeFields Dog friendly: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.dogFriendlyLevel>=val?"checked":"")
@@ -50,7 +50,7 @@ block content
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.groomingLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields HealthIssues: 
+          div.bigCardCardResumeFields Health issues: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.healthIssuesLevel>=val?"checked":"")
@@ -60,17 +60,17 @@ block content
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.intelligenceLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields SheddingLevel: 
+          div.bigCardCardResumeFields Shedding level: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.sheddingLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields SocialNeeds: 
+          div.bigCardCardResumeFields Social needs: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.socialNeedsLevel>=val?"checked":"")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields StrangerFriendly: 
+          div.bigCardCardResumeFields Stranger friendly: 
           div
             each val in view.starRatingRange
               span.fa.fa-star(class=breed.strangerFriendlyLevel>=val?"checked":"")
@@ -82,7 +82,7 @@ block content
         div.bigCatCardResumeLine
           div.bigCardCardResumeFields Hairless: 
           div
-            span.fa.fa-check(class=breed.healthIssuesLevel?"greenChecked":"grayChecked")
+            span.fa.fa-check(class=breed.isHairless?"greenChecked":"grayChecked")
         div.bigCatCardResumeLine
           div.bigCardCardResumeFields Hypoallergenic:
           div
@@ -92,16 +92,16 @@ block content
           div
             span.fa.fa-check(class=breed.isRex?"greenChecked":"grayChecked")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields Suppressed Tail:
+          div.bigCardCardResumeFields Suppressed tail:
           div
             span.fa.fa-check(class=breed.isSuppressedTail?"greenChecked":"grayChecked")
         div.bigCatCardResumeLine
-          div.bigCardCardResumeFields Short Legs: 
+          div.bigCardCardResumeFields Short legs: 
           div
             span.fa.fa-check(class=breed.isShortLegs?"greenChecked":"grayChecked")
         div.bigCatCardResumeLine
           div.bigCardCardResumeFields Rare:
           div
-            span.fa.fa-check(class=breed.isHairless?"greenChecked":"grayChecked")        
+            span.fa.fa-check(class=breed.isRare?"greenChecked":"grayChecked")        
         a(href=breed.wikipediaUrl)
           div.fakeButton Wikipedia
