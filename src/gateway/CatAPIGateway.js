@@ -1,3 +1,4 @@
+const { getAllBreedsFromCache, saveBreedsOnCache } = require("./CacheGateway");
 const { convertCatListGatewayResponseToCatList, convertCatListGatewayResponseToCat, convertCatGatewayResponseToCat, convertBreedListGatewayResponseToBreedList } = require("./converter/CatAPIGatewayConverter");
 
 const catAPIHost = 'https://api.thecatapi.com'
@@ -30,10 +31,18 @@ async function getCatFromCatAPIById(id) {
 }
 
 async function getAllBreeds() {
-  const response = await fetch(catAPIHost+'/v1/breeds', apiKeyHeader);
-  const data = await response.json();
-  breeds = convertBreedListGatewayResponseToBreedList(data);
-  return breeds;
+
+  const breedsFromCache = await getAllBreedsFromCache();
+  if(breedsFromCache){
+    return convertBreedListGatewayResponseToBreedList(breedsFromCache);
+  } else{
+    const response = await fetch(catAPIHost+'/v1/breeds', apiKeyHeader);
+    const breedsFromAPI = await response.json();
+    if(breedsFromAPI) {
+      await saveBreedsOnCache(breedsFromAPI);
+    }
+    return convertBreedListGatewayResponseToBreedList(breedsFromAPI);
+  }
 }
 
 exports.getRandomCatsFromCatAPIWithLimitAndBreed = getRandomCatsFromCatAPIWithLimitAndBreed;
