@@ -2,7 +2,7 @@ const { getAllBreeds } = require("../gateway/CatAPIGateway");
 
 
 async function getCatsByBreedSearchName(searchName) {
-  breeds = await getAllBreeds();
+  const breeds = await getAllBreeds();
   const filteredBreedsByName = breeds.filter(breed => {
     return doesBreedNameIncludeSearchName(breed.name,searchName) || doesAltNamesIncludeSearchName(breed.altNames,searchName)
   })

@@ -32,6 +32,7 @@ router.get('', async (req, res) => {
         await buildDefaultShowcase(res);
       }
   } catch (err) {
+      console.log(err);
       res.render('notFound');
   }
 });

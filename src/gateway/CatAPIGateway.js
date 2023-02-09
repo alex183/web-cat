@@ -31,7 +31,6 @@ async function getCatFromCatAPIById(id) {
 }
 
 async function getAllBreeds() {
-
   const breedsFromCache = await getAllBreedsFromCache();
   if(breedsFromCache){
     return convertBreedListGatewayResponseToBreedList(breedsFromCache);
